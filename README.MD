@@ -19,6 +19,7 @@ Run: yarn dev
 - Added checks for data using v-if
 - Use scss global variables instead of fixed values
 - Concept for skeleton loading
+- Introduced new GraphQL query for post
 - Page title and page detail title using head() 
 
 ## Missing improvements
