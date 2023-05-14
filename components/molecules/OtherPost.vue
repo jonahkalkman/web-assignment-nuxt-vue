@@ -55,7 +55,7 @@ export default class OtherPost extends Vue {
   object-fit: contain;
 }
 .other-title {
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: 500;
   font-size: 10px;
@@ -64,7 +64,7 @@ export default class OtherPost extends Vue {
   color: $black;
 }
 .other-date {
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;

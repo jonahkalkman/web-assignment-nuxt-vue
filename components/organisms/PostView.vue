@@ -72,7 +72,7 @@ export default class PostView extends Vue {
   padding-bottom: 20px;
 }
 .detail-title {
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: 600;
   font-size: 17px;
@@ -85,7 +85,7 @@ export default class PostView extends Vue {
 }
 .detail-author {
   display: inline-block;
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -94,7 +94,7 @@ export default class PostView extends Vue {
 }
 .detail-date {
   display: inline-block;
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -106,7 +106,7 @@ export default class PostView extends Vue {
 .detail-content {
   overflow: hidden;
   width: 100%;
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;

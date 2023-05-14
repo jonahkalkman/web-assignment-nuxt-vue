@@ -12,7 +12,7 @@ export default class BaseText extends Vue {}
 <style lang="scss" scoped>
 .error {
   color: $error;
-  font-family: Inter;
+  font-family: $font-default;
   font-size: 17px;
   line-height: 20px;
 }

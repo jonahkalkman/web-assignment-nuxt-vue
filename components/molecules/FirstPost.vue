@@ -42,7 +42,7 @@ export default class FirstPost extends Vue {
   left: 16px;
   bottom: 8px;
   right: 16px;
-  font-family: Inter;
+  font-family: $font-default;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

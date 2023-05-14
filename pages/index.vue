@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import PostsQuery from '@/graphql/queries/PostsQuery.gql'
-import { SITE_URL } from '@/constants/config'
+import { SITE_TITLE, SITE_URL } from '@/constants/config'
 import { ListPostsInput, Post } from '~/types/graphql/types'
 
 @Component({
@@ -27,5 +27,11 @@ import { ListPostsInput, Post } from '~/types/graphql/types'
 export default class Index extends Vue {
   posts: Array<Post> | null = null
   url = SITE_URL
+
+  head() {
+    return {
+      title: SITE_TITLE,
+    }
+  }
 }
 </script>

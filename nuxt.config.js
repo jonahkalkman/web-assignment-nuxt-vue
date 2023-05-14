@@ -46,7 +46,9 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL,
+        httpEndpoint:
+          process.env.GRAPHQL_URL ||
+          'https://paragrapp-production.herokuapp.com/graphql/',
       },
     },
   },

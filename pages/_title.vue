@@ -41,6 +41,12 @@ export default class Detail extends Vue {
   urlValid: boolean = true
   url = SITE_URL
 
+  head() {
+    return {
+      title: this.post?.title,
+    }
+  }
+
   async asyncData({ route, params }: any) {
     const id = await route.query.id
     const title = await params.title
