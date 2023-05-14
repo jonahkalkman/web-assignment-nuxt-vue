@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <div class="other-post" @click="$emit('open')">
+  <!-- Used NuxtLink instead of 'open' method because Nuxt standard way to navigate  -->
+  <!-- We lose some flexibility by choosing for NuxtLink instead of emitting on click because we cannot preform other things if a post is clicked -->
+  <NuxtLink v-if="post.featuredMedia && post.title" :to="postUrl">
+    <div class="other-post">
       <img :src="post.featuredMedia" class="other-image" />
       <div class="other-post-content">
         <div class="other-title">{{ post.title }}</div>
@@ -8,7 +10,7 @@
       </div>
     </div>
     <BaseDivider />
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts">
@@ -18,6 +20,11 @@ import { Post } from '~/types/graphql/types'
 @Component
 export default class OtherPost extends Vue {
   @Prop({ required: true }) readonly post!: Post
+
+  // Use title in URL for SEO instead of only ID
+  postUrl = `/${this.post?.title?.split(' ').join('-').toLowerCase()}?id=${
+    this.post?.id
+  }`
 
   date(): string {
     if (!this.post.date) return ''
@@ -53,10 +60,8 @@ export default class OtherPost extends Vue {
   font-weight: 500;
   font-size: 10px;
   line-height: 14px;
-
   letter-spacing: -0.2px;
-
-  color: #000000;
+  color: $black;
 }
 .other-date {
   font-family: Inter;
@@ -64,10 +69,7 @@ export default class OtherPost extends Vue {
   font-weight: normal;
   font-size: 10px;
   line-height: 14px;
-  /* identical to box height, or 140% */
-
   letter-spacing: -0.2px;
-
-  color: #8e8e93;
+  color: $date-grey;
 }
 </style>

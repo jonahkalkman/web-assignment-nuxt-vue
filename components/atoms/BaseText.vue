@@ -13,7 +13,7 @@ export default class BaseText extends Vue {}
 p {
   @extend %text-style-body;
 
-  white-space: pre-line;
+  white-space: normal;
 }
 .callout {
   @extend %text-style-callout;

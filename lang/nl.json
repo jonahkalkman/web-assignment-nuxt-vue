@@ -3,7 +3,7 @@
     "name": "Paragr.app",
     "check-price": "Bekijk prijs",
     "divider": "/",
-    "e-mail" : "info@9to5.software",
+    "e-mail": "info@9to5.software",
     "cancel": "Annuleer",
     "optional": "Optioneel",
     "for-wordpress": " Voor WordPress"
@@ -30,7 +30,7 @@
     "extend-involvement-title": "Verhoog de betrokkenheid met notificaties",
     "extend-involvement-description": "Lezers kunnen ervoor kiezen om push notificiaties in te stellen en bij iedere nieuw bericht een notificatie te krijgen. Op deze manier verhoog je de betrokkenheid en uiteindelijk ook je inkomsten van je advertenties."
   },
-  "requirements" : {
+  "requirements": {
     "title": "Belangrijke benodigdheden voordat we kunnen beginnen",
     "stores-title": "App Store en Google Play",
     "stores-description": "Om jouw app te kunnen publiceren heb je een App Store en Google Play account nodig. Hiermee kun je jouw app in de stores zetten. Geen zorgen, hierin zullen we je ook in ondersteunen.",
@@ -45,7 +45,7 @@
     "google-ad-title": "Google ad units",
     "google-ad-description": "Adverteren in je app? Dan moet je beschikken over een Google Ad Unit. Op Google Ads kun je hier meer informatie over vinden."
   },
-  "call-to-action" : {
+  "call-to-action": {
     "title": "Klaar om je nieuwsplatform uit te breiden met een app?",
     "price-details": "per maand, excl. btw",
     "action": "Aan de slag",
@@ -87,5 +87,9 @@
     "description": "Kopieer en plak de url van jouw website",
     "footnote": "Zorg ervoor dat je WordPress Rest API ingeschakeld staat en niet afgeschermd is.",
     "input-placeholder": "https://www.jouw-website.com"
+  },
+  "post-detail": {
+    "author-credit": "Geschreven door: ",
+    "error": "Er ging iets mis tijdens het laden van het bericht. Probeer het nog een keer."
   }
 }

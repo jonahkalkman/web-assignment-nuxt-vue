@@ -1,0 +1,9 @@
+query post($post: PostInput!) {
+  post(post: $post) {
+    date
+    content
+    featuredMedia
+    id
+    title
+  }
+}

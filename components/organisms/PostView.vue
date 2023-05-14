@@ -1,12 +1,33 @@
 <template>
-  <div>
-    <div class="post-details" @click="$emit('open')">
-      <img :src="post.featuredMedia" class="detail-image" />
-      <div class="detail-post">
-        <div class="detail-title">{{ post.title }}</div>
-        <div class="detail-date">{{ date() }}</div>
-        <div class="detail-content mt-1">{{ post.content }}</div>
+  <div class="post-details">
+    <SkeletonPostDetail v-if="loading" :loading="loading" />
+    <!-- <Loading v-if="loading" /> -->
+
+    <div v-else-if="!loading && post && validUrl" class="detail-wrapper">
+      <img
+        v-if="post.featuredMedia"
+        :src="post.featuredMedia"
+        class="detail-image"
+      />
+      <div v-if="post.title && post.content" class="detail-post mt-1-25">
+        <h1 class="detail-title">{{ post.title }}</h1>
+        <div class="detail-info">
+          <span v-if="post.author" class="detail-author">
+            {{ $t('post-detail.author-credit') }}
+            {{ post.author }}
+            {{ ' —' }}
+          </span>
+          <time v-if="post.date" class="detail-date"> {{ date() }}</time>
+        </div>
+        <div class="detail-content mt-1">
+          <BaseText>
+            {{ post.content }}
+          </BaseText>
+        </div>
       </div>
+    </div>
+    <div v-else class="detail-error">
+      <Error />
     </div>
   </div>
 </template>
@@ -18,10 +39,12 @@ import { Post } from '~/types/graphql/types'
 @Component
 export default class PostView extends Vue {
   @Prop({ required: true }) readonly post!: Post
+  @Prop({ required: true }) readonly loading!: boolean
+  @Prop({ required: true }) readonly validUrl!: boolean
 
+  // TODO: Introduce util for date formatting
   date(): string {
-    if (!this.post.date) return ''
-    const date = new Date(this.post.date)
+    const date = new Date(this.post.date!)
 
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
@@ -33,25 +56,52 @@ export default class PostView extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+.post-details {
+  height: 100%;
+}
+.detail-wrapper {
+  background-color: $white;
+}
 .detail-image {
+  display: block;
   width: 100%;
 }
 .detail-post {
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 20px;
 }
 .detail-title {
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 17px;
-  /* or 142% */
-
+  font-size: 17px;
+  line-height: 20px;
+  color: $black;
   letter-spacing: -0.3px;
+}
+.detail-info {
+  margin-top: 3px;
+}
+.detail-author {
+  display: inline-block;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $dark-grey;
+}
+.detail-date {
+  display: inline-block;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: $dark-grey;
 
-  color: #000000;
+  letter-spacing: -0.2px;
 }
 .detail-content {
   overflow: hidden;
@@ -59,23 +109,14 @@ export default class PostView extends Vue {
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
-  font-size: 10px;
-  line-height: 14px;
-
+  font-size: 15px;
+  line-height: 20px;
+  color: $black;
+  margin-top: 15px;
   letter-spacing: -0.2px;
-
-  color: #000000;
 }
-.detail-date {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 14px;
-  /* identical to box height, or 140% */
-
-  letter-spacing: -0.2px;
-
-  color: #8e8e93;
+.detail-error {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 </style>

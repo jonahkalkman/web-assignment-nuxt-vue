@@ -1,14 +1,17 @@
 <template>
   <div class="navbar">
-    <button v-if="back" class="back" @click="$emit('back')">
-      <BaseImage
-        image="icons/ic_arrow_right.svg"
-        height="24px"
-        width="24px"
-        class="flip"
+    <!-- Used a-tag instead of NuxtLink because back() is not possible with NuxtLink -->
+    <a v-if="back" class="back" href="" @click.prevent="$router.back()">
+      <img
+        src="~/assets/images/icons/ic_chevron_right.svg"
+        alt=""
+        height="12px"
+        width="8px"
       />
-    </button>
-    <img v-if="faviconUrl" :src="faviconUrl" class="favicon" />
+    </a>
+    <NuxtLink to="/">
+      <img v-if="faviconUrl" :src="faviconUrl" class="favicon" />
+    </NuxtLink>
   </div>
 </template>
 
@@ -27,6 +30,10 @@ export default class Navbar extends Vue {
     if (!hostname) return null
     return 'https://api.faviconkit.com/' + hostname
   }
+
+  goback() {
+    return this.$router.back()
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -34,12 +41,13 @@ export default class Navbar extends Vue {
   height: 64px;
   width: 100%;
   position: relative;
-  background-color: white;
+  background-color: $white;
 }
 .back {
   position: absolute;
-  left: 12px;
-  bottom: 8px;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
 }
 .favicon {
@@ -49,6 +57,6 @@ export default class Navbar extends Vue {
   object-fit: contain;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 </style>

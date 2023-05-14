@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://paragrapp-staging.herokuapp.com/graphql/'
+schema: 'https://paragrapp-production.herokuapp.com/graphql/'
 documents: 'graphql/**/*.gql'
 generates:
   types/graphql.d.ts:

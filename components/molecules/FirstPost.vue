@@ -1,8 +1,14 @@
 <template>
-  <div class="first-post" @click="$emit('open')">
+  <!-- Use NuxtLink instead of 'open' method because Nuxt standard way to navigate  -->
+  <!-- We lose some flexibility by choosing for NuxtLink instead of emitting on click because we cannot preform other things if a post is clicked -->
+  <NuxtLink
+    v-if="post.featuredMedia && post.title"
+    :to="postUrl"
+    class="first-post"
+  >
     <img :src="post.featuredMedia" class="first-image" />
     <div class="first-title">{{ post.title }}</div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts">
@@ -12,6 +18,11 @@ import { Post } from '~/types/graphql/types'
 @Component
 export default class FirstPost extends Vue {
   @Prop({ required: true }) readonly post!: Post
+
+  // Use title in URL for SEO instead of only ID
+  postUrl = `/${this.post?.title?.split(' ').join('-').toLowerCase()}?id=${
+    this.post?.id
+  }`
 }
 </script>
 <style lang="scss" scoped>
@@ -36,12 +47,8 @@ export default class FirstPost extends Vue {
   font-weight: 600;
   font-size: 12px;
   line-height: 17px;
-  /* or 142% */
-
   letter-spacing: -0.3px;
-
-  color: #ffffff;
-
+  color: $white;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.32);
 }
 </style>
