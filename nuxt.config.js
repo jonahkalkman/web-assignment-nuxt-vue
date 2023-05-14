@@ -1,3 +1,5 @@
+import { SITE_URL } from './constants/config'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -14,7 +16,11 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: 'https://api.faviconkit.com/' + new URL(SITE_URL).hostname,
+      },
       {
         rel: 'stylesheet',
         href:

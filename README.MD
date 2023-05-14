@@ -24,4 +24,4 @@ Run: yarn dev
 ## Missing improvements
 - Use and extend title global styles (%text-style-title1) for titles and subtitles on pages
 - Refactor names of colors
-- Dynamic favicon
+- Make constants dynamic instead of static constants via env variables
