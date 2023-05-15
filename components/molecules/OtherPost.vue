@@ -3,7 +3,7 @@
   <!-- We lose some flexibility by choosing for NuxtLink instead of emitting on click because we cannot preform other things if a post is clicked -->
   <NuxtLink v-if="post.featuredMedia && post.title" :to="postUrl">
     <div class="other-post">
-      <img :src="post.featuredMedia" class="other-image" />
+      <img :src="post.featuredMedia" class="other-image" :alt="post.title" />
       <div class="other-post-content">
         <div class="other-title">{{ post.title }}</div>
         <div class="other-date">{{ date() }}</div>

@@ -6,7 +6,7 @@
     :to="postUrl"
     class="first-post"
   >
-    <img :src="post.featuredMedia" class="first-image" />
+    <img :src="post.featuredMedia" class="first-image" :alt="post.title" />
     <div class="first-title">{{ post.title }}</div>
   </NuxtLink>
 </template>

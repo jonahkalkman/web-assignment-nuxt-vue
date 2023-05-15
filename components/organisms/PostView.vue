@@ -8,6 +8,7 @@
         v-if="post.featuredMedia"
         :src="post.featuredMedia"
         class="detail-image"
+        :alt="post.title"
       />
       <div v-if="post.title && post.content" class="detail-post mt-1-25">
         <h1 class="detail-title">{{ post.title }}</h1>

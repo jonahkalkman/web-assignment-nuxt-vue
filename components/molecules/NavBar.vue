@@ -3,13 +3,13 @@
     <NuxtLink v-if="back" class="back" to="/">
       <img
         src="~/assets/images/icons/ic_chevron_right.svg"
-        alt=""
+        alt="back icon"
         height="12px"
         width="8px"
       />
     </NuxtLink>
     <NuxtLink to="/">
-      <img v-if="faviconUrl" :src="faviconUrl" class="favicon" />
+      <img v-if="faviconUrl" :src="faviconUrl" class="favicon" alt="logo" />
     </NuxtLink>
   </div>
 </template>
