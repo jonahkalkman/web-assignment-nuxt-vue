@@ -1,14 +1,13 @@
 <template>
   <div class="navbar">
-    <!-- Used a-tag instead of NuxtLink because back() is not possible with NuxtLink -->
-    <a v-if="back" class="back" href="" @click.prevent="$router.back()">
+    <NuxtLink v-if="back" class="back" to="/">
       <img
         src="~/assets/images/icons/ic_chevron_right.svg"
         alt=""
         height="12px"
         width="8px"
       />
-    </a>
+    </NuxtLink>
     <NuxtLink to="/">
       <img v-if="faviconUrl" :src="faviconUrl" class="favicon" />
     </NuxtLink>
